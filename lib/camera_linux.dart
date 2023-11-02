@@ -1,37 +1,42 @@
-import 'dart:async';
+/// lib/ffi_loader.dart
+
+import 'dart:convert';
+import 'dart:developer' as dev_tools;
 import 'dart:ffi';
+
+import 'dart:io';
 import 'dart:typed_data';
-import 'camera_linux_bindings_generated.dart';
 import 'package:ffi/ffi.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:camera_linux/ffi/camera_generated_bindings.dart' as cl;
+import 'package:path/path.dart' as p;
 
 class CameraLinux {
-  late CameraLinuxBindings _bindings;
-
-  CameraLinux() {
-    final dylib = DynamicLibrary.open('libcamera_linux.so');
-    _bindings = CameraLinuxBindings(dylib);
+  String _getPath() {
+    final cjsonExamplePath = Directory.current.absolute.path;
+    var path = p.join(cjsonExamplePath, 'native/');
+    path = p.join(path, 'libopencv_wrapper.so');
+    return path;
   }
 
-  // Open Default Camera
-  Future<void> initializeCamera() async {
-    _bindings.startVideoCaptureInThread();
-  }
+  // Uint8List getLatestFrameData() {
+  //   final camera = cl.camera_linux(DynamicLibrary.open(_getPath()));
+  //   Pointer<Uint8> framePointer = camera.get_latest_frame_data();
 
-  // Close The Camera
-  void stopCamera() {
-    _bindings.stopVideoCapture();
-  }
+  //   // You should know the frame size (number of bytes) to read
+  //   final frameSize = 1920 * 1080 * 3; // adjust this to your actual frame size
 
-  // Capture The Frame
-  Uint8List captureImage() {
-    final lengthPtr = calloc<Int>();
-    Pointer<Uint8> framePointer = _bindings.getLatestFrameBytes(lengthPtr);
-    return getLatestFrameData(framePointer, lengthPtr.value);
-  }
+  //   List<int> frameList = framePointer.asTypedList(frameSize);
+  //   return Uint8List.fromList(frameList);
+  // }
 
-  // Get The Latest Frame
-  Uint8List getLatestFrameData(Pointer<Uint8> framePointer, frameSize) {
-    List<int> frameList = framePointer.asTypedList(frameSize);
-    return Uint8List.fromList(frameList);
-  }
+  // void initializeCamera() {
+  //   final camera = cl.camera_linux(DynamicLibrary.open(_getPath()));
+  //   return camera.startCapturing();
+  // }
+
+  // void stopCamera() {
+  //   final camera = cl.camera_linux(DynamicLibrary.open(_getPath()));
+  //   return camera.stopCapturing();
+  // }
 }
