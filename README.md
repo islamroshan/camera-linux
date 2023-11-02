@@ -1,12 +1,12 @@
 # camera_linux
 
-Camera Linux is a Flutter FFI plugin designed specifically for the Linux platform. This plugin allows Flutter developers to access and capture images from the Linux camera, seamlessly integrating native code invocation using Dart's FFI.
+A new Flutter FFI plugin project.
 
 ## Getting Started
 
-Dart FFI Integration: Built on top of Flutter's FFI (Foreign Function Interface) to directly invoke native functions.
-Platform-Specific: Tailored for Linux, ensuring optimal performance and compatibility.
-Easy Access to Camera: Provides straightforward functions to capture images directly from the Linux camera.
+This project is a starting point for a Flutter
+[FFI plugin](https://docs.flutter.dev/development/platform-integration/c-interop),
+a specialized package that includes native code directly invoked with Dart FFI.
 
 ## Project structure
 
@@ -18,7 +18,7 @@ This template uses the following structure:
 * `lib`: Contains the Dart code that defines the API of the plugin, and which
   calls into the native code using `dart:ffi`.
 
-* platform folder (`linux`): Contains the build files
+* platform folders (`android`, `ios`, `windows`, etc.): Contains the build files
   for building and bundling the native code library with the platform application.
 
 ## Building and bundling native code
@@ -57,17 +57,23 @@ A plugin can have both FFI and method channels:
         ffiPlugin: true
 ```
 
-The native build systems that are invoked by FFI (and method channel) plugin is:
+The native build systems that are invoked by FFI (and method channel) plugins are:
 
+* For Android: Gradle, which invokes the Android NDK for native builds.
+  * See the documentation in android/build.gradle.
+* For iOS and MacOS: Xcode, via CocoaPods.
+  * See the documentation in ios/camera_linux.podspec.
+  * See the documentation in macos/camera_linux.podspec.
 * For Linux and Windows: CMake.
   * See the documentation in linux/CMakeLists.txt.
   * See the documentation in windows/CMakeLists.txt.
 
 ## Binding to native code
 
-Instead of manually writing the Dart bindings to native code, they are auto-generated from the header file (src/camera_linux.h) using the package:ffigen. To refresh these bindings, execute:
-
-`flutter pub run ffigen --config ffigen.yaml`
+To use the native code, bindings in Dart are needed.
+To avoid writing these by hand, they are generated from the header file
+(`src/camera_linux.h`) by `package:ffigen`.
+Regenerate the bindings by running `flutter pub run ffigen --config ffigen.yaml`.
 
 ## Invoking native code
 
@@ -78,16 +84,9 @@ Longer-running functions should be invoked on a helper isolate to avoid
 dropping frames in Flutter applications.
 For example, see `sumAsync` in `lib/camera_linux.dart`.
 
-## Getting Started with the Plugin
+## Flutter help
 
-Add the camera_linux plugin to your pubspec.yaml:
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
 
-```dependencies:
-    camera_linux: ^0.1.0
-```
-
-Execute the following command to fetch the package:
-`flutter pub get`
-
-## Further Assistance
-For comprehensive guidance on Flutter, visit the official documentation, offering tutorials, samples, mobile development insights, and a complete API reference.
