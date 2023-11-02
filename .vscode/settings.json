@@ -1,0 +1,7 @@
+{
+    "cmake.sourceDirectory": "/home/muhammad/Development/flutter-projects/camera_testing/camera/camera_linux/example/linux",
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "camera_linux.h": "c"
+    }
+}
