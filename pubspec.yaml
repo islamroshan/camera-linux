@@ -1,6 +1,6 @@
 name: camera_linux
-description: A new Flutter FFI plugin project.
-version: 0.0.3
+description: Take pictures from camere on linux platform.
+version: 0.0.5
 homepage: https://github.com/islamroshan/camera-linux.git
 
 environment:
@@ -12,14 +12,14 @@ dependencies:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
   ffi: ^2.0.1
-  
+
 dev_dependencies:
   ffigen: ^6.1.2
   image: ^3.0.1
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -35,7 +35,7 @@ flutter:
   # This is required for using `dart:ffi`.
   # All these are used by the tooling to maintain consistency when
   # adding or updating assets for this project.
-  #
+  # 
   # Please refer to README.md for a detailed explanation.
   plugin:
     platforms:

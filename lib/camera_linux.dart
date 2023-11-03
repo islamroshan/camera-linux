@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:ffi';
 import 'dart:typed_data';
 import 'camera_linux_bindings_generated.dart';
@@ -22,11 +23,26 @@ class CameraLinux {
     _bindings.stopVideoCapture();
   }
 
+  // Convert Frame Into Base64
+  String uint8ListToBase64Url(Uint8List data) {
+    String base64String = base64Encode(data);
+
+    String base64Url = base64String
+        .replaceAll('+', '-')
+        .replaceAll('/', '_')
+        .replaceAll('=', '');
+
+    int requiredLength = (4 - (base64Url.length % 4)) % 4;
+    return base64Url + '=' * requiredLength;
+  }
+
   // Capture The Frame
-  Uint8List captureImage() {
+  Future<String> captureImage() async {
     final lengthPtr = calloc<Int>();
     Pointer<Uint8> framePointer = _bindings.getLatestFrameBytes(lengthPtr);
-    return getLatestFrameData(framePointer, lengthPtr.value);
+    final latestFrame = getLatestFrameData(framePointer, lengthPtr.value);
+    final base64Image = uint8ListToBase64Url(latestFrame);
+    return base64Image;
   }
 
   // Get The Latest Frame
