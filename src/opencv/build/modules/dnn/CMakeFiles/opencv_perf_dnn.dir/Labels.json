@@ -1,0 +1,132 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/test/test_common.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/test/test_common.impl.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_caffe.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_common.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_convolution.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_convolution1d.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_convolution3d.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_gemm.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_layer.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_main.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_net.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_recurrent.cpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/dnn/perf/perf_precomp.hpp",
+			"labels" : 
+			[
+				"Main",
+				"opencv_dnn",
+				"PerfTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Main",
+			"opencv_dnn",
+			"PerfTest"
+		],
+		"name" : "opencv_perf_dnn"
+	}
+}

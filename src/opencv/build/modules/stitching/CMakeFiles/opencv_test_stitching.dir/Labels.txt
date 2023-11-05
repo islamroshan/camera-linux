@@ -1,0 +1,45 @@
+# Target labels
+ Main
+ opencv_stitching
+ AccuracyTest
+# Source files and their labels
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/ocl/test_warpers.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/test_blenders.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/test_blenders.cuda.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/test_exposure_compensate.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/test_main.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/test_matchers.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/test_reprojection.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/test_stitcher.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/test_wave_correction.cpp
+ Main
+ opencv_stitching
+ AccuracyTest
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/opencv/modules/stitching/test/test_precomp.hpp
+ Main
+ opencv_stitching
+ AccuracyTest

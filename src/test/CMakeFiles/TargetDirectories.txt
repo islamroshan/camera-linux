@@ -1,0 +1,4 @@
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/test/CMakeFiles/mysharedlib.dir
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/test/CMakeFiles/DisplayImage.dir
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/test/CMakeFiles/edit_cache.dir
+/home/muhammad/Development/flutter-projects/camera_testing/native_test/test/CMakeFiles/rebuild_cache.dir
