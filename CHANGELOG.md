@@ -25,3 +25,7 @@
 ## 0.0.7
 
 * OpenCV Dependencies added statically
+
+## 0.0.8
+
+* OpenCV static dependencies removed

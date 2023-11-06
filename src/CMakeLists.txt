@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(camera_linux_library VERSION 0.0.1 LANGUAGES CXX)
+project(camera_linux_library VERSION 0.0.1 LANGUAGES C CXX)
  
 set(SOURCE_FILES opencv_wrapper.cpp)
 add_library(opencv_wrapper SHARED ${SOURCE_FILES})

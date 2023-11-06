@@ -1,6 +1,6 @@
 name: camera_linux
 description: Take pictures from camere on linux platform.
-version: 0.0.7
+version: 0.0.8
 homepage: https://github.com/islamroshan/camera-linux.git
 
 environment:
