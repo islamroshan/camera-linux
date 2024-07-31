@@ -2,92 +2,131 @@
 
 Camera Linux is a Flutter FFI plugin designed specifically for the Linux platform. This plugin allows Flutter developers to access and capture images from the Linux camera, seamlessly integrating native code invocation using Dart's FFI.
 
+## Features
+
+- Dart FFI Integration: Built on top of Flutter's FFI (Foreign Function Interface) to directly invoke native functions.
+- Platform-Specific: Tailored for Linux, ensuring optimal performance and compatibility.
+- Easy Access to Camera: Provides straightforward functions to initialize, capture images, and stop the camera.
+- Base64 Image Encoding: Captures images and converts them to base64 format for easy display and manipulation.
+
 ## Getting Started
 
-Dart FFI Integration: Built on top of Flutter's FFI (Foreign Function Interface) to directly invoke native functions.
-Platform-Specific: Tailored for Linux, ensuring optimal performance and compatibility.
-Easy Access to Camera: Provides straightforward functions to capture images directly from the Linux camera.
-
-## Project structure
-
-This template uses the following structure:
-
-* `src`: Contains the native source code, and a CmakeFile.txt file for building
-  that source code into a dynamic library.
-
-* `lib`: Contains the Dart code that defines the API of the plugin, and which
-  calls into the native code using `dart:ffi`.
-
-* platform folder (`linux`): Contains the build files
-  for building and bundling the native code library with the platform application.
-
-## Building and bundling native code
-
-The `pubspec.yaml` specifies FFI plugins as follows:
+To use this plugin, add `camera_linux` as a dependency in your `pubspec.yaml` file:
 
 ```yaml
-  plugin:
-    platforms:
-      some_platform:
-        ffiPlugin: true
+dependencies:
+  camera_linux: ^0.1.0
 ```
 
-This configuration invokes the native build for the various target platforms
-and bundles the binaries in Flutter applications using these FFI plugins.
+## System Dependencies
 
-This can be combined with dartPluginClass, such as when FFI is used for the
-implementation of one platform in a federated plugin:
+Before using this plugin, ensure you have the necessary system dependencies installed. The main requirement is the OpenCV library. Here's how to install it on various Linux distributions:
+
+### Ubuntu and Debian-based systems:
+```bash
+sudo apt update
+sudo apt install libopencv-dev
+```
+
+### Fedora:
+```bash
+sudo dnf install opencv opencv-devel
+```
+
+### Arch Linux and Manjaro:
+```bash
+sudo pacman -S opencv
+```
+
+### openSUSE:
+```bash
+sudo zypper install opencv opencv-devel
+```
+
+### CentOS/RHEL:
+First, enable the EPEL repository:
+```bash
+sudo yum install epel-release
+```
+Then install OpenCV:
+```bash
+sudo yum install opencv opencv-devel
+```
+
+### Gentoo:
+```bash
+sudo emerge --ask media-libs/opencv
+```
+
+For other Linux distributions, please refer to their package management systems to install the equivalent OpenCV development libraries. The package might be named `opencv`, `libopencv`, or `opencv-devel` depending on the distribution.
+
+If your distribution doesn't provide pre-built OpenCV packages, you may need to compile OpenCV from source. Refer to the [official OpenCV documentation](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html) for detailed instructions.
+
+## Usage
+
+Here's a basic example of how to use the `camera_linux` plugin:
+
+```dart
+import 'package:camera_linux/camera_linux.dart';
+
+// Create an instance of the plugin
+final cameraLinux = CameraLinux();
+
+// Initialize the camera
+await cameraLinux.initializeCamera();
+
+// Capture an image
+String base64Image = await cameraLinux.captureImage();
+
+// Stop the camera
+cameraLinux.stopCamera();
+```
+
+## API Reference
+
+### `CameraLinux` Class
+
+#### `initializeCamera()`
+Initializes the camera and starts video capture in a separate thread.
+
+#### `captureImage()`
+Captures the latest frame from the camera and returns it as a base64-encoded string.
+
+#### `stopCamera()`
+Stops the video capture and closes the camera.
+
+## Example
+
+The plugin includes an example app demonstrating its usage. The app provides buttons to start the camera, capture images, and stop the camera. Captured images are displayed in the app.
+
+To run the example app:
+
+1. Navigate to the example directory: `cd example`
+2. Run the app: `flutter run -d linux`
+
+## Project Structure
+
+- `src/`: Contains the native source code and CMakeLists.txt for building the dynamic library.
+- `lib/`: Contains the Dart code defining the plugin API and FFI bindings.
+- `linux/`: Contains build files for bundling the native code library with the platform application.
+
+## Building and Bundling Native Code
+
+The `pubspec.yaml` specifies this as an FFI plugin:
 
 ```yaml
-  plugin:
-    implements: some_other_plugin
-    platforms:
-      some_platform:
-        dartPluginClass: SomeClass
-        ffiPlugin: true
+plugin:
+  platforms:
+    linux:
+      ffiPlugin: true
 ```
 
-A plugin can have both FFI and method channels:
+This configuration invokes the native build for Linux and bundles the binaries in Flutter applications using this FFI plugin.
 
-```yaml
-  plugin:
-    platforms:
-      some_platform:
-        pluginClass: SomeName
-        ffiPlugin: true
+## Binding to Native Code
+
+The Dart bindings to native code are auto-generated from the header file (`src/camera_linux.h`) using the `package:ffigen`. To refresh these bindings, run:
+
 ```
-
-The native build systems that are invoked by FFI (and method channel) plugin is:
-
-* For Linux and Windows: CMake.
-  * See the documentation in linux/CMakeLists.txt.
-  * See the documentation in windows/CMakeLists.txt.
-
-## Binding to native code
-
-Instead of manually writing the Dart bindings to native code, they are auto-generated from the header file (src/camera_linux.h) using the package:ffigen. To refresh these bindings, execute:
-
-`flutter pub run ffigen --config ffigen.yaml`
-
-## Invoking native code
-
-Very short-running native functions can be directly invoked from any isolate.
-For example, see `sum` in `lib/camera_linux.dart`.
-
-Longer-running functions should be invoked on a helper isolate to avoid
-dropping frames in Flutter applications.
-For example, see `sumAsync` in `lib/camera_linux.dart`.
-
-## Getting Started with the Plugin
-
-Add the camera_linux plugin to your pubspec.yaml:
-
-```dependencies:
-    camera_linux: ^0.1.0
+flutter pub run ffigen --config ffigen.yaml
 ```
-
-Execute the following command to fetch the package:
-`flutter pub get`
-
-## Further Assistance
-For comprehensive guidance on Flutter, visit the official documentation, offering tutorials, samples, mobile development insights, and a complete API reference.
