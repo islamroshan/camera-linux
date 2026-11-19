@@ -1,3 +1,9 @@
+## Unreleased
+
+* Compile the OpenCV wrapper into the bundled Linux library so its capture
+  symbols remain available after deployment or when linking with `--as-needed`.
+* Support OpenCV 5's C++17 requirement and add a native bundle relocation test.
+
 ## 0.0.1
 
 * Initial release.
